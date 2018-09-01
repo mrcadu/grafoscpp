@@ -9,12 +9,7 @@ class Vertice{
 public:
     Vertice();
     list<int> verticesVizinhosIndices;
-    void defineCodigo(int codigo);
-    int codigoVertice;
-    int numeroAtualIterador;
-    bool marcado;
-    int nivelBusca;
-    map<int,int> mapaDistancia;
+    void defineVerticesVizinhos();
 };
 
 

@@ -1,8 +1,7 @@
 #include "Vertice.h"
 
-void Vertice::defineCodigo(int codigo)
+void Vertice::defineVerticesVizinhos()
 {
-    codigoVertice = codigo;
     list<int> verticesVizinhosIndices;
 }
 Vertice::Vertice()
