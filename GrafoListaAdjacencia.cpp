@@ -14,7 +14,7 @@ void Grafo::lerGrafo() {
     int primeiroVertice;
     int segundoVertice;
     FILE *arquivoGrafo;
-    arquivoGrafo = fopen("../arquivoGrafoMenor.txt", "r");
+    arquivoGrafo = fopen("../input.txt", "r");
     if(arquivoGrafo) {
         fscanf(arquivoGrafo, "%d\n", &numeroVertices);
         vector<Vertice> vetorVertices(numeroVertices);
@@ -40,16 +40,14 @@ void Grafo::BFS(int indiceVerticeRaiz){
     Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
     verticesDescobertos.push(verticeRaiz);
     while (!verticesDescobertos.empty()) {
-        Vertice *verticeAtual = verticesDescobertos.front();
+        Vertice verticeAtual = *verticesDescobertos.front();
         verticesDescobertos.pop();
-        list<Vertice*> *vizinhos = &verticeAtual->verticesVizinhos;
-        bool *example = &verticeAtual->verticesVizinhos.front()->marcadoBusca;
+        list<Vertice*> *vizinhos = &verticeAtual.verticesVizinhos;
         for (auto &vizinho : *vizinhos) {
-            printf("%d",vizinho->verticesVizinhos.size());
-/*            if(!vizinho->marcadoBusca) {
+            if(!vizinho->marcadoBusca) {
                 vizinho->marcar();
                 verticesDescobertos.push(vizinho);
-            }*/
+            }
         }
     }
 }
