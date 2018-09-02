@@ -7,7 +7,8 @@ using namespace std;
 
 class VerticeMatriz {
 public:
-    VerticeMatriz(int numvertices);
+    VerticeMatriz();
+    explicit VerticeMatriz(int numvertices);
     vector<bool> vetorVerticesVizinhos;
     void defineMatrizVertices(int numvertices);
 };

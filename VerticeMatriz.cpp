@@ -1,5 +1,6 @@
 #include "VerticeMatriz.h"
 
+VerticeMatriz::VerticeMatriz()=default;
 void VerticeMatriz::defineMatrizVertices(int numvertices)
 {
     vector<bool> MatrizVertices(numvertices);
