@@ -16,7 +16,7 @@ void Grafo::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../arquivoGrafoMedio.txt", "r");
+    input = fopen("../as_graph.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         vector<Vertice> vetorVertices(numeroVertices);

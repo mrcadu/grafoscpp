@@ -6,8 +6,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/renan/c++/grafoscpp/Grafo.cpp" "C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/grafoscpp.dir/Grafo.cpp.obj"
   "C:/Users/renan/c++/grafoscpp/GrafoMatriz.cpp" "C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.obj"
-  "C:/Users/renan/c++/grafoscpp/MatrizQuadrada.cpp" "C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.obj"
   "C:/Users/renan/c++/grafoscpp/Vertice.cpp" "C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/grafoscpp.dir/Vertice.cpp.obj"
+  "C:/Users/renan/c++/grafoscpp/VerticeMatriz.cpp" "C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj"
   "C:/Users/renan/c++/grafoscpp/main.cpp" "C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/grafoscpp.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

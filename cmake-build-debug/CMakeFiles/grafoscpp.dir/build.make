@@ -108,18 +108,18 @@ CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\renan\c++\grafoscpp\GrafoMatriz.cpp -o CMakeFiles\grafoscpp.dir\GrafoMatriz.cpp.s
 
-CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.obj: CMakeFiles/grafoscpp.dir/flags.make
-CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.obj: ../MatrizQuadrada.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\renan\c++\grafoscpp\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\grafoscpp.dir\MatrizQuadrada.cpp.obj -c C:\Users\renan\c++\grafoscpp\MatrizQuadrada.cpp
+CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj: CMakeFiles/grafoscpp.dir/flags.make
+CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj: ../VerticeMatriz.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\renan\c++\grafoscpp\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\grafoscpp.dir\VerticeMatriz.cpp.obj -c C:\Users\renan\c++\grafoscpp\VerticeMatriz.cpp
 
-CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\renan\c++\grafoscpp\MatrizQuadrada.cpp > CMakeFiles\grafoscpp.dir\MatrizQuadrada.cpp.i
+CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\renan\c++\grafoscpp\VerticeMatriz.cpp > CMakeFiles\grafoscpp.dir\VerticeMatriz.cpp.i
 
-CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\renan\c++\grafoscpp\MatrizQuadrada.cpp -o CMakeFiles\grafoscpp.dir\MatrizQuadrada.cpp.s
+CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\renan\c++\grafoscpp\VerticeMatriz.cpp -o CMakeFiles\grafoscpp.dir\VerticeMatriz.cpp.s
 
 # Object files for target grafoscpp
 grafoscpp_OBJECTS = \
@@ -127,7 +127,7 @@ grafoscpp_OBJECTS = \
 "CMakeFiles/grafoscpp.dir/Vertice.cpp.obj" \
 "CMakeFiles/grafoscpp.dir/Grafo.cpp.obj" \
 "CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.obj" \
-"CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.obj"
+"CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj"
 
 # External object files for target grafoscpp
 grafoscpp_EXTERNAL_OBJECTS =
@@ -136,7 +136,7 @@ grafoscpp.exe: CMakeFiles/grafoscpp.dir/main.cpp.obj
 grafoscpp.exe: CMakeFiles/grafoscpp.dir/Vertice.cpp.obj
 grafoscpp.exe: CMakeFiles/grafoscpp.dir/Grafo.cpp.obj
 grafoscpp.exe: CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.obj
-grafoscpp.exe: CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.obj
+grafoscpp.exe: CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj
 grafoscpp.exe: CMakeFiles/grafoscpp.dir/build.make
 grafoscpp.exe: CMakeFiles/grafoscpp.dir/linklibs.rsp
 grafoscpp.exe: CMakeFiles/grafoscpp.dir/objects1.rsp

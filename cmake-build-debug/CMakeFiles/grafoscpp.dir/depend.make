@@ -7,12 +7,17 @@ CMakeFiles/grafoscpp.dir/Grafo.cpp.obj: ../Vertice.h
 
 CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.obj: ../GrafoMatriz.cpp
 CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.obj: ../GrafoMatriz.h
+CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.obj: ../VerticeMatriz.h
 
 CMakeFiles/grafoscpp.dir/Vertice.cpp.obj: ../Vertice.cpp
 CMakeFiles/grafoscpp.dir/Vertice.cpp.obj: ../Vertice.h
 
+CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj: ../VerticeMatriz.cpp
+CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj: ../VerticeMatriz.h
+
 CMakeFiles/grafoscpp.dir/main.cpp.obj: ../Grafo.h
 CMakeFiles/grafoscpp.dir/main.cpp.obj: ../GrafoMatriz.h
 CMakeFiles/grafoscpp.dir/main.cpp.obj: ../Vertice.h
+CMakeFiles/grafoscpp.dir/main.cpp.obj: ../VerticeMatriz.h
 CMakeFiles/grafoscpp.dir/main.cpp.obj: ../main.cpp
 

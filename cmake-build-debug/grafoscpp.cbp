@@ -92,16 +92,16 @@
 		<Unit filename="C:/Users/renan/c++/grafoscpp/GrafoMatriz.h">
 			<Option target="grafoscpp"/>
 		</Unit>
-		<Unit filename="C:/Users/renan/c++/grafoscpp/MatrizQuadrada.cpp">
-			<Option target="grafoscpp"/>
-		</Unit>
-		<Unit filename="C:/Users/renan/c++/grafoscpp/MatrizQuadrada.h">
-			<Option target="grafoscpp"/>
-		</Unit>
 		<Unit filename="C:/Users/renan/c++/grafoscpp/Vertice.cpp">
 			<Option target="grafoscpp"/>
 		</Unit>
 		<Unit filename="C:/Users/renan/c++/grafoscpp/Vertice.h">
+			<Option target="grafoscpp"/>
+		</Unit>
+		<Unit filename="C:/Users/renan/c++/grafoscpp/VerticeMatriz.cpp">
+			<Option target="grafoscpp"/>
+		</Unit>
+		<Unit filename="C:/Users/renan/c++/grafoscpp/VerticeMatriz.h">
 			<Option target="grafoscpp"/>
 		</Unit>
 		<Unit filename="C:/Users/renan/c++/grafoscpp/main.cpp">

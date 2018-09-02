@@ -17,6 +17,8 @@ using namespace std;
 int main(){
     clock_t tInicio, tFim, tDecorrido;
     tInicio = clock();
+    GrafoMatriz matriz;
+    matrizTeste.lerGrafo();
     tFim = clock();
     tDecorrido = ((tFim - tInicio) / (CLOCKS_PER_SEC / 1000));
     printf("%f", static_cast<double>(tDecorrido));

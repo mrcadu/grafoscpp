@@ -4,16 +4,16 @@
 #include <queue>
 #include <iostream>
 #include <fstream>
+#include "VerticeMatriz.h"
 
 using namespace std;
 
 class GrafoMatriz{
 public:
-    MatrizGrafo();
-    void inicializarGrafo(int numeroVertices);
-    int matrizArestas[int][int];
+    vector<VerticeMatriz> vertices;
+    GrafoMatriz();
+    void inicializarGrafo(int numvertices);
     void lerGrafo();
-
 
 };
 

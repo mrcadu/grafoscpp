@@ -1,12 +1,18 @@
 #include <utility>
 #include "GrafoMatriz.h"
 
-GrafoMatriz::GrafoMatriz()
-= default;
 
-void GrafoMatriz::inicializarGrafo(int matriz)
+GrafoMatriz::GrafoMatriz()=default;
+
+void GrafoMatriz::inicializarGrafo(int numvertices)
 {
-    this -> matrizArestas =  matriz;
+    VerticeMatriz matriz = VerticeMatriz(numvertices);
+    vector<VerticeMatriz> vetorVertices(numvertices);
+    for(int f =0;f<numvertices;f++){
+        vetorVertices[f].vetorVerticesVizinhos.resize(numvertices);
+    }
+    vertices = vetorVertices;
+
 }
 
 void GrafoMatriz::lerGrafo() {
@@ -15,16 +21,16 @@ void GrafoMatriz::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../arquivoGrafoMedio.txt", "r");
+    input = fopen("../as_graph.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
-        int matriz[numeroVertices][numeroVertices];
+        inicializarGrafo(numeroVertices);
         while (fscanf(input, "%d %d \n", &verticeOrigem, &verticeDestino) != EOF) {
-            matriz[verticeOrigem-1][verticeDestino-1] = 1;
-            matriz[verticeDestino-1][verticeOrigem-1] = 1;
-            numeroArestas += 1;
+            vertices[verticeOrigem].vetorVerticesVizinhos[verticeDestino] = true;
+            vertices[verticeDestino].vetorVerticesVizinhos[verticeOrigem] = true;
+            numeroArestas++;
         }
-        inicializarGrafo(matriz);
+
     }
     fclose(input);
 }

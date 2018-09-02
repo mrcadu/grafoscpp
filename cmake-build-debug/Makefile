@@ -176,33 +176,6 @@ GrafoMatriz.cpp.s:
 	$(MAKE) -f CMakeFiles\grafoscpp.dir\build.make CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.s
 .PHONY : GrafoMatriz.cpp.s
 
-MatrizQuadrada.obj: MatrizQuadrada.cpp.obj
-
-.PHONY : MatrizQuadrada.obj
-
-# target to build an object file
-MatrizQuadrada.cpp.obj:
-	$(MAKE) -f CMakeFiles\grafoscpp.dir\build.make CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.obj
-.PHONY : MatrizQuadrada.cpp.obj
-
-MatrizQuadrada.i: MatrizQuadrada.cpp.i
-
-.PHONY : MatrizQuadrada.i
-
-# target to preprocess a source file
-MatrizQuadrada.cpp.i:
-	$(MAKE) -f CMakeFiles\grafoscpp.dir\build.make CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.i
-.PHONY : MatrizQuadrada.cpp.i
-
-MatrizQuadrada.s: MatrizQuadrada.cpp.s
-
-.PHONY : MatrizQuadrada.s
-
-# target to generate assembly for a file
-MatrizQuadrada.cpp.s:
-	$(MAKE) -f CMakeFiles\grafoscpp.dir\build.make CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.s
-.PHONY : MatrizQuadrada.cpp.s
-
 Vertice.obj: Vertice.cpp.obj
 
 .PHONY : Vertice.obj
@@ -229,6 +202,33 @@ Vertice.s: Vertice.cpp.s
 Vertice.cpp.s:
 	$(MAKE) -f CMakeFiles\grafoscpp.dir\build.make CMakeFiles/grafoscpp.dir/Vertice.cpp.s
 .PHONY : Vertice.cpp.s
+
+VerticeMatriz.obj: VerticeMatriz.cpp.obj
+
+.PHONY : VerticeMatriz.obj
+
+# target to build an object file
+VerticeMatriz.cpp.obj:
+	$(MAKE) -f CMakeFiles\grafoscpp.dir\build.make CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj
+.PHONY : VerticeMatriz.cpp.obj
+
+VerticeMatriz.i: VerticeMatriz.cpp.i
+
+.PHONY : VerticeMatriz.i
+
+# target to preprocess a source file
+VerticeMatriz.cpp.i:
+	$(MAKE) -f CMakeFiles\grafoscpp.dir\build.make CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.i
+.PHONY : VerticeMatriz.cpp.i
+
+VerticeMatriz.s: VerticeMatriz.cpp.s
+
+.PHONY : VerticeMatriz.s
+
+# target to generate assembly for a file
+VerticeMatriz.cpp.s:
+	$(MAKE) -f CMakeFiles\grafoscpp.dir\build.make CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.s
+.PHONY : VerticeMatriz.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -272,12 +272,12 @@ help:
 	@echo ... GrafoMatriz.obj
 	@echo ... GrafoMatriz.i
 	@echo ... GrafoMatriz.s
-	@echo ... MatrizQuadrada.obj
-	@echo ... MatrizQuadrada.i
-	@echo ... MatrizQuadrada.s
 	@echo ... Vertice.obj
 	@echo ... Vertice.i
 	@echo ... Vertice.s
+	@echo ... VerticeMatriz.obj
+	@echo ... VerticeMatriz.i
+	@echo ... VerticeMatriz.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

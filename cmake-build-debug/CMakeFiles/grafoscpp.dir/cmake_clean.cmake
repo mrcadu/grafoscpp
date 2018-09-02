@@ -3,7 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/grafoscpp.dir/Vertice.cpp.obj"
   "CMakeFiles/grafoscpp.dir/Grafo.cpp.obj"
   "CMakeFiles/grafoscpp.dir/GrafoMatriz.cpp.obj"
-  "CMakeFiles/grafoscpp.dir/MatrizQuadrada.cpp.obj"
+  "CMakeFiles/grafoscpp.dir/VerticeMatriz.cpp.obj"
   "grafoscpp.pdb"
   "grafoscpp.exe"
   "grafoscpp.exe.manifest"
