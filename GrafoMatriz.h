@@ -1,14 +1,21 @@
-//
-// Created by renan on 01/09/2018.
-//
+#ifndef GRAFOMATRIZ_H_
+#define GRAFOMATRIZ_H_
+#include <stack>
+#include <queue>
+#include <iostream>
+#include <fstream>
 
-#ifndef GRAFOSCPP_GRAFOMATRIZ_H
-#define GRAFOSCPP_GRAFOMATRIZ_H
+using namespace std;
 
+class GrafoMatriz{
+public:
+    MatrizGrafo();
+    void inicializarGrafo(int numeroVertices);
+    int matrizArestas[int][int];
+    void lerGrafo();
 
-class GrafoMatriz {
 
 };
 
 
-#endif //GRAFOSCPP_GRAFOMATRIZ_H
+#endif

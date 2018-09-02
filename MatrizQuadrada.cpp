@@ -1,4 +1,14 @@
-//
-// Created by renan on 01/09/2018.
-//
+#include 'MatrizQuadrada.h'
+#include "MatrizQuadrada.h"
+
+
+
+
+void MatrizQuadrada::MatrizQuadrada() {
+   int numVertices = this -> numVertices
+    int Matriz[numVertices][numVertices];
+
+}
+
+
 

@@ -1,14 +1,12 @@
-//
-// Created by renan on 01/09/2018.
-//
-
 #ifndef GRAFOSCPP_MATRIZQUADRADA_H
 #define GRAFOSCPP_MATRIZQUADRADA_H
 
 
 class MatrizQuadrada {
-
+public:
+    MatrizQuadrada();
+    void criarMatriz();
 };
 
 
-#endif //GRAFOSCPP_MATRIZQUADRADA_H
+#endif
