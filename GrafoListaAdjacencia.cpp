@@ -1,6 +1,6 @@
 #include <utility>
 
-#include "Grafo.h"
+#include "GrafoListaAdjacencia.h"
 
 Grafo::Grafo()
 = default;
