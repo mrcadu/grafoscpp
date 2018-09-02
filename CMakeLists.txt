@@ -3,4 +3,4 @@ project(grafoscpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(grafoscpp main.cpp Vertice.cpp Vertice.h Grafo.cpp Grafo.h GrafoMatriz.h GrafoMatriz.cpp MatrizQuadrada.cpp MatrizQuadrada.h)
+add_executable(grafoscpp main.cpp Vertice.cpp Vertice.h GrafoListaAdjacencia.cpp GrafoListaAdjacencia.h GrafoMatriz.h GrafoMatriz.cpp MatrizQuadrada.cpp MatrizQuadrada.h)

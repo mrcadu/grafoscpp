@@ -5,7 +5,7 @@
 #include <memory>
 #include <cstring>
 #include <stdio.h>
-#include "Grafo.h"
+#include "GrafoListaAdjacencia.h"
 #include "GrafoMatriz.h"
 #include <time.h>
 #include <algorithm>
