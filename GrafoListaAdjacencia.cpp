@@ -2,21 +2,18 @@
 
 #include "GrafoListaAdjacencia.h"
 
-Grafo::Grafo()
+GrafoListaAdjacencia::GrafoListaAdjacencia()
 = default;
-
-void Grafo::inicializarGrafo(vector<Vertice> vetorVertices)
-{
+void GrafoListaAdjacencia::inicializarGrafo(vector<Vertice> vetorVertices) {
     this -> vetorVertices = std::move(vetorVertices);
 }
-
-void Grafo::lerGrafo() {
+void GrafoListaAdjacencia::lerGrafo() {
     int numeroVertices;
     int numeroArestas = 0;
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../as_graph.txt", "r");
+    input = fopen("../arquivoGrafoMenor.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         vector<Vertice> vetorVertices(numeroVertices);
@@ -28,4 +25,28 @@ void Grafo::lerGrafo() {
         inicializarGrafo(vetorVertices);
     }
     fclose(input);
+}
+void GrafoListaAdjacencia::desmarcarVertices(){
+    for (auto &vetorVertice : vetorVertices) {
+        vetorVertice.desmarcar();
+    }
+}
+void GrafoListaAdjacencia::BFS(int indiceVerticeRaiz){
+    desmarcarVertices();
+    queue<Vertice*> verticesDescobertos;
+    Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
+    verticeRaiz->marcar();
+    verticesDescobertos.push(verticeRaiz);
+    while (!verticesDescobertos.empty()) {
+        Vertice verticeAtual = *verticesDescobertos.front();
+        verticesDescobertos.pop();
+        list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
+        for (auto &vizinho : *vizinhos) {
+            Vertice *vizinhoAtual = & vetorVertices[vizinho];
+            if(!vizinhoAtual->marcadoBusca) {
+                vizinhoAtual->marcar();
+                verticesDescobertos.push(vizinhoAtual);
+            }
+        }
+    }
 }

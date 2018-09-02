@@ -8,12 +8,14 @@
 
 using namespace std;
 
-class Grafo{
+class GrafoListaAdjacencia{
 public:
-    Grafo();
+    GrafoListaAdjacencia();
     void inicializarGrafo(vector<Vertice> vetorVertices);
-    vector<Vertice> vetorVertices;
     void lerGrafo();
+    void desmarcarVertices();
+    void BFS(int indiceVerticeRaiz);
+    vector<Vertice> vetorVertices;
 };
 
 #endif
