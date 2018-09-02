@@ -14,14 +14,9 @@
 using namespace std;
 
 int main(){
-    clock_t tInicio, tFim, tDecorrido;
     GrafoListaAdjacencia grafoListaAdjacencia;
     grafoListaAdjacencia.lerGrafo();
-    tInicio = clock();
-    grafoListaAdjacencia.BFS(0);
-    tFim = clock();
-    tDecorrido = ((tFim - tInicio) / (CLOCKS_PER_SEC / 1000));
-    printf("%f", static_cast<double>(tDecorrido));
+    grafoListaAdjacencia.informacoesGrafo();
 }
 
 

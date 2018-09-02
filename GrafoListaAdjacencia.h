@@ -9,12 +9,15 @@
 using namespace std;
 
 class GrafoListaAdjacencia{
+    void desmarcarVertices();
+    void inicializarGrafo(vector<Vertice> vetorVertices);
+    int numeroArestas;
 public:
     GrafoListaAdjacencia();
-    void inicializarGrafo(vector<Vertice> vetorVertices);
     void lerGrafo();
-    void desmarcarVertices();
     void BFS(int indiceVerticeRaiz);
+    void DFS(int indiceVerticeRaiz);
+    void informacoesGrafo();
     vector<Vertice> vetorVertices;
 };
 

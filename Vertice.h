@@ -8,7 +8,6 @@ using namespace std;
 class Vertice{
 public:
     Vertice();
-    void defineVerticesVizinhos();
     void marcar();
     void desmarcar();
     list<int> verticesVizinhosIndices;

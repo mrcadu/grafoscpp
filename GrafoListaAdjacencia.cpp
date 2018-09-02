@@ -1,5 +1,5 @@
 #include <utility>
-
+#include <algorithm>
 #include "GrafoListaAdjacencia.h"
 
 GrafoListaAdjacencia::GrafoListaAdjacencia()
@@ -23,6 +23,7 @@ void GrafoListaAdjacencia::lerGrafo() {
             numeroArestas += 1;
         }
         inicializarGrafo(vetorVertices);
+        this -> numeroArestas = numeroArestas;
     }
     fclose(input);
 }
@@ -48,5 +49,45 @@ void GrafoListaAdjacencia::BFS(int indiceVerticeRaiz){
                 verticesDescobertos.push(vizinhoAtual);
             }
         }
+    }
+}
+void GrafoListaAdjacencia::DFS(int indiceVerticeRaiz){
+
+}
+void GrafoListaAdjacencia::informacoesGrafo(){
+    ofstream arquivoGrafoInformacoes;
+    int numeroVertices = vetorVertices.size();
+    int somatorioGraus=0;
+    int medianaGrau;
+    int grauMaximo;
+    int grauMinimo;
+    double grauMedio;
+    vector<int> vetorGraus;
+    vetorGraus.reserve(numeroVertices);
+    if(arquivoGrafoInformacoes){
+        for(auto &vertice : vetorVertices){
+            int grauVertice = vertice.verticesVizinhosIndices.size();
+            vetorGraus.push_back(grauVertice);
+            somatorioGraus += grauVertice;
+        }
+        sort(vetorGraus.begin(),vetorGraus.end());
+        grauMinimo = vetorGraus.front();
+        grauMaximo = vetorGraus.back();
+        grauMedio = (double) somatorioGraus/numeroVertices;
+        if(vetorGraus.size()%2 == 0){
+            medianaGrau = vetorGraus[vetorGraus.size()/2];
+        }
+        else{
+            medianaGrau = vetorGraus[(vetorGraus.size()/2)+1];
+        }
+
+        arquivoGrafoInformacoes.open("../informacoesGrafo.txt");
+        arquivoGrafoInformacoes << "numero de vertices:" << numeroVertices  << endl;
+        arquivoGrafoInformacoes << "numero de arestas:" << numeroArestas << endl;
+        arquivoGrafoInformacoes << "grau Médio:" << grauMedio << endl;
+        arquivoGrafoInformacoes << "grau Min:" << grauMinimo << endl;
+        arquivoGrafoInformacoes << "grau Max:" << grauMaximo << endl;
+        arquivoGrafoInformacoes << "Mediana dos Graus:" << medianaGrau << endl;
+
     }
 }
