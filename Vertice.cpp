@@ -1,8 +1,9 @@
 #include "Vertice.h"
 
-void Vertice::defineVerticesVizinhos()
-{
-    list<int> verticesVizinhosIndices;
+Vertice::Vertice(){
+    marcadoBusca= false;
+};
+
+void Vertice::marcar() {
+    marcadoBusca = true;
 }
-Vertice::Vertice()
-= default;

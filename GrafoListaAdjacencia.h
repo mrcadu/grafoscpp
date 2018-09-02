@@ -12,8 +12,10 @@ class Grafo{
 public:
     Grafo();
     void inicializarGrafo(vector<Vertice> vetorVertices);
-    vector<Vertice> vetorVertices;
     void lerGrafo();
+    void BFS(int indiceVerticeRaiz);
+    void desmarcarVertices();
+    vector<Vertice> vetorVertices;
 };
 
 #endif
