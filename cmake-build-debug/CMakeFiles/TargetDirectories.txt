@@ -1,3 +1,0 @@
-C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/grafoscpp.dir
-C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/renan/c++/grafoscpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
