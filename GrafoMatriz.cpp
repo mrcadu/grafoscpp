@@ -24,7 +24,7 @@ void GrafoMatriz::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../grafoteste.txt", "r");
+    input = fopen("../as_graph.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         inicializarGrafo(numeroVertices);
@@ -40,38 +40,27 @@ void GrafoMatriz::lerGrafo() {
 
 void GrafoMatriz::info() {
     lerGrafo();
-    int Infos[6];
     int arestas = numeroArestas;
     int tamVertices = vertices.size();
-    int Graus[tamVertices];
+    vector<int> Graus;
+    Graus.reserve(tamVertices);
     for (int i =0;i<tamVertices;i++){
         int grau=0;
-        for (int j = 0; i<tamVertices;j++) {
+        for (int j = 0; j < tamVertices; j++) {
             if (vertices[i].vetorVerticesVizinhos[j] == 1) {
                 grau++;
             }
+
         }
         Graus[i] = grau;
 
     }
     int gmax = 0;
     int gmin = tamVertices;
-    int gavg;
+    double gavg;
     int gmed;
 
-    for(int i = 0;i<tamVertices;i++){
-        if(Graus[i]>gmax){
-            gmax = Graus[i];
-        }
-    }
-
-    for(int i = 0;i<tamVertices;i++){
-        if(Graus[i]<gmin){
-            gmin = Graus[i];
-        }
-    }
-
-    int totalGraus;
+    double totalGraus=0;
     for(int i = 0;i<tamVertices;i++){
         totalGraus+= Graus[i];
         }
@@ -79,15 +68,18 @@ void GrafoMatriz::info() {
 
     gavg = totalGraus/tamVertices;
 
-    std::sort(Graus,Graus + tamVertices);
+    std::sort(Graus.begin(),Graus.end());
 
     if(tamVertices%2 == 0){
-        int n = trunc(tamVertices%2);
-        gmed = (Graus[n] + Graus[n+1])/2;
+        int n = trunc(tamVertices/2);
+        gmed = (Graus[n-1] + Graus[n])/2;
     } else {
         int n = tamVertices/2;
         gmed = Graus[n];
     }
+
+    gmin=Graus[tamVertices-1];
+    gmax=Graus[0];
 
 
     ofstream arquivoSaida;
@@ -96,8 +88,8 @@ void GrafoMatriz::info() {
         arquivoSaida.open("output.txt");
         arquivoSaida << "Numero de Vertices:" << tamVertices  << endl;
         arquivoSaida << "Numero de Arestas:" << arestas << endl;
-        arquivoSaida << "Grau Médio:" << gmed << endl;
-        arquivoSaida << "Mediana dos Graus:" << gavg << endl;
+        arquivoSaida << "Grau Médio:" << gavg << endl;
+        arquivoSaida << "Mediana dos Graus:" << gmed << endl;
         arquivoSaida << "Grau Min:" << gmin << endl;
         arquivoSaida << "Grau Max:" << gmax << endl;
 
@@ -106,6 +98,8 @@ void GrafoMatriz::info() {
 
 
 }
+
+ /// void GrafoMatriz::BFS(){}
 
 
 
