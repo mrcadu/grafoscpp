@@ -15,14 +15,17 @@
 using namespace std;
 
 int main(){
-    clock_t tInicio, tFim, tDecorrido;
-    tInicio = clock();
-    GrafoMatriz matriz;
-    matriz.lerGrafo();
-    matriz.BFS(1);
-    tFim = clock();
-    tDecorrido = ((tFim - tInicio) / (CLOCKS_PER_SEC / 1000));
-    printf("%f", static_cast<double>(tDecorrido));
+        clock_t tInicio, tFim, tDecorrido;
+        tInicio = clock();
+        GrafoMatriz matriz;
+    for(int i=0;i<1000;i++) {
+        matriz.lerGrafo();
+        matriz.BFS(i);
+    }
+        tFim = clock();
+        tDecorrido = ((tFim - tInicio) / (CLOCKS_PER_SEC / 1000));
+        printf("%f", static_cast<double>(tDecorrido));
+
 }
 
 

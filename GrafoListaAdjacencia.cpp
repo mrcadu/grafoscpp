@@ -13,7 +13,7 @@ void GrafoListaAdjacencia::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../arquivoGrafoMenor.txt", "r");
+    input = fopen("../input.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         vector<Vertice> vetorVertices(numeroVertices);
@@ -31,28 +31,6 @@ void GrafoListaAdjacencia::desmarcarVertices(){
     for (auto &vetorVertice : vetorVertices) {
         vetorVertice.desmarcar();
     }
-}
-void GrafoListaAdjacencia::BFS(int indiceVerticeRaiz){
-    desmarcarVertices();
-    queue<Vertice*> verticesDescobertos;
-    Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
-    verticeRaiz->marcar();
-    verticesDescobertos.push(verticeRaiz);
-    while (!verticesDescobertos.empty()) {
-        Vertice verticeAtual = *verticesDescobertos.front();
-        verticesDescobertos.pop();
-        list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
-        for (auto &vizinho : *vizinhos) {
-            Vertice *vizinhoAtual = & vetorVertices[vizinho];
-            if(!vizinhoAtual->marcadoBusca) {
-                vizinhoAtual->marcar();
-                verticesDescobertos.push(vizinhoAtual);
-            }
-        }
-    }
-}
-void GrafoListaAdjacencia::DFS(int indiceVerticeRaiz){
-
 }
 void GrafoListaAdjacencia::informacoesGrafo(){
     ofstream arquivoGrafoInformacoes;
@@ -89,5 +67,42 @@ void GrafoListaAdjacencia::informacoesGrafo(){
         arquivoGrafoInformacoes << "grau Max:" << grauMaximo << endl;
         arquivoGrafoInformacoes << "Mediana dos Graus:" << medianaGrau << endl;
 
+    }
+}
+void GrafoListaAdjacencia::BFS(int indiceVerticeRaiz){
+    desmarcarVertices();
+    queue<Vertice*> verticesDescobertos;
+    Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
+    verticeRaiz->marcar();
+    verticesDescobertos.push(verticeRaiz);
+    while (!verticesDescobertos.empty()) {
+        Vertice verticeAtual = *verticesDescobertos.front();
+        verticesDescobertos.pop();
+        list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
+        for (auto &vizinho : *vizinhos) {
+            Vertice *vizinhoAtual = & vetorVertices[vizinho];
+            if(!vizinhoAtual->marcadoBusca) {
+                vizinhoAtual->marcar();
+                verticesDescobertos.push(vizinhoAtual);
+            }
+        }
+    }
+}
+void GrafoListaAdjacencia::DFS(int indiceVerticeRaiz){
+    desmarcarVertices();
+    stack<Vertice*> pilhaVertices;
+    Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
+    pilhaVertices.push(verticeRaiz);
+    while(!pilhaVertices.empty()){
+        pilhaVertices.top()->marcar();
+        Vertice verticeAtual = *pilhaVertices.top();
+        pilhaVertices.pop();
+        list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
+        for(auto &vizinho :*vizinhos){
+            Vertice *vizinhoAtual = &vetorVertices[vizinho];
+            if(!vizinhoAtual->marcadoBusca) {
+                pilhaVertices.push(vizinhoAtual);
+            }
+        }
     }
 }

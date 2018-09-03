@@ -24,7 +24,7 @@ void GrafoMatriz::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../as_graph.txt", "r");
+    input = fopen("./as_graph.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         inicializarGrafo(numeroVertices);
