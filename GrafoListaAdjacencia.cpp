@@ -13,7 +13,7 @@ void GrafoListaAdjacencia::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../arquivoGrafoMenor.txt", "r");
+    input = fopen("../arquivoGrafoMedio.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         vector<Vertice> vetorVertices(numeroVertices);
@@ -69,42 +69,6 @@ void GrafoListaAdjacencia::informacoesGrafo(){
 
     }
 }
-vector<vector<int>> GrafoListaAdjacencia::BFSArvoreGeradora(int indiceVerticeRaiz){
-    desmarcarVertices();
-    queue<int> verticesDescobertos;
-    int nivelAtual=0;
-    int indicePaiAtual;
-    vector<vector<int>> informacoesArvore(vetorVertices.size());
-    for(int i = 0;i<vetorVertices.size();i++){
-        informacoesArvore[i].resize(2);
-    }
-    Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
-    verticeRaiz->marcar();
-    verticesDescobertos.push(indiceVerticeRaiz);
-    informacoesArvore[indiceVerticeRaiz][0] = 0;
-    informacoesArvore[indiceVerticeRaiz][1] = -1;
-    indicePaiAtual = indiceVerticeRaiz;
-    while (!verticesDescobertos.empty()) {
-        int indiceVerticeAtual = verticesDescobertos.front();
-        if(informacoesArvore[verticesDescobertos.front()][1] != indicePaiAtual){
-            nivelAtual += 1;
-            indicePaiAtual = verticesDescobertos.front();
-        }
-        Vertice verticeAtual = vetorVertices[indiceVerticeAtual];
-        verticesDescobertos.pop();
-        list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
-        for (auto &vizinho : *vizinhos) {
-            Vertice *vizinhoAtual = & vetorVertices[vizinho];
-            if(!vizinhoAtual->marcadoBusca) {
-                informacoesArvore[vizinho][0] = nivelAtual;
-                informacoesArvore[vizinho][1] = indiceVerticeAtual+1;
-                vizinhoAtual->marcar();
-                verticesDescobertos.push(vizinho);
-            }
-        }
-    }
-    return informacoesArvore;
-}
 void GrafoListaAdjacencia::BFS(int indiceVerticeRaiz){
     desmarcarVertices();
     queue<int> verticesDescobertos;
@@ -140,4 +104,70 @@ void GrafoListaAdjacencia::DFS(int indiceVerticeRaiz){
         }
 
     }
+}
+vector<vector<int>>  GrafoListaAdjacencia::DFSArvoreGeradora(int indiceVerticeRaiz){
+    desmarcarVertices();
+    int nivelBuscaAtual = 0;
+    stack<int> pilhaVertices;
+    vector<vector<int>> informacoesArvore(vetorVertices.size());
+    for(int i = 0;i<vetorVertices.size();i++){
+        informacoesArvore[i].resize(2);
+        informacoesArvore[i][1] = -2;
+    };
+    pilhaVertices.push(indiceVerticeRaiz);
+    informacoesArvore[indiceVerticeRaiz][1] = -1;
+    informacoesArvore[indiceVerticeRaiz][0] = 0;
+    while(!pilhaVertices.empty()){
+        int indiceVerticeAtual = pilhaVertices.top();
+        Vertice *verticeAtual = &vetorVertices[pilhaVertices.top()];
+        pilhaVertices.pop();
+        if(!verticeAtual->marcadoBusca){
+            verticeAtual->marcar();
+            list<int> *vizinhos = &verticeAtual->verticesVizinhosIndices;
+            for(auto &vizinho :*vizinhos){
+                if(informacoesArvore[vizinho][1] == -2) {
+                    informacoesArvore[vizinho][1] = indiceVerticeAtual + 1;
+                    informacoesArvore[vizinho][0] = informacoesArvore[indiceVerticeAtual][0]+1;
+                }
+                pilhaVertices.push(vizinho);
+            }
+        }
+    }
+    return informacoesArvore;
+}
+vector<vector<int>> GrafoListaAdjacencia::BFSArvoreGeradora(int indiceVerticeRaiz){
+    desmarcarVertices();
+    queue<int> verticesDescobertos;
+    int nivelAtual=0;
+    int indicePaiAtual;
+    vector<vector<int>> informacoesArvore(vetorVertices.size());
+    for(int i = 0;i<vetorVertices.size();i++){
+        informacoesArvore[i].resize(2);
+    }
+    Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
+    verticeRaiz->marcar();
+    verticesDescobertos.push(indiceVerticeRaiz);
+    informacoesArvore[indiceVerticeRaiz][0] = 0;
+    informacoesArvore[indiceVerticeRaiz][1] = -1;
+    indicePaiAtual = indiceVerticeRaiz;
+    while (!verticesDescobertos.empty()) {
+        int indiceVerticeAtual = verticesDescobertos.front();
+        if(informacoesArvore[verticesDescobertos.front()][1] != indicePaiAtual){
+            nivelAtual ++;
+            indicePaiAtual = verticesDescobertos.front();
+        }
+        Vertice verticeAtual = vetorVertices[indiceVerticeAtual];
+        verticesDescobertos.pop();
+        list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
+        for (auto &vizinho : *vizinhos) {
+            Vertice *vizinhoAtual = & vetorVertices[vizinho];
+            if(!vizinhoAtual->marcadoBusca) {
+                informacoesArvore[vizinho][0] = nivelAtual;
+                informacoesArvore[vizinho][1] = indiceVerticeAtual+1;
+                vizinhoAtual->marcar();
+                verticesDescobertos.push(vizinho);
+            }
+        }
+    }
+    return informacoesArvore;
 }
