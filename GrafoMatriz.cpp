@@ -7,14 +7,13 @@
 
 GrafoMatriz::GrafoMatriz()=default;
 
-void GrafoMatriz::inicializarGrafo(int numvertices)
-{
+void GrafoMatriz::inicializarGrafo(int numvertices) {
     VerticeMatriz matriz = VerticeMatriz(numvertices);
-    vector<VerticeMatriz> vetorVertices(numvertices);
+    vector<VerticeMatriz> vertices(numvertices);
     for(int f =0;f<numvertices;f++){
-        vetorVertices[f].vetorVerticesVizinhos.resize(numvertices);
+        vertices[f].vetorVerticesVizinhos.resize(numvertices);
     }
-    vertices = vetorVertices;
+    vertices = vertices;
     numeroArestas=0;
 
 }
@@ -106,7 +105,6 @@ void GrafoMatriz::desmarcarVertices(){
 
 void GrafoMatriz::BFS(int indiceVerticeRaiz) {
     desmarcarVertices();
-    vector<vector<int>> Arvores;
     queue<VerticeMatriz *> verticesDescobertos;
     VerticeMatriz *verticeRaiz = &vertices[indiceVerticeRaiz];
     verticeRaiz->marcar();
@@ -146,4 +144,41 @@ void GrafoMatriz::DFS(int indiceVerticeRaiz){
         }
 
     }
+}
+
+vector<vector<int>> GrafoMatriz::BFSArvoreGeradora(int indiceVerticeRaiz){
+    desmarcarVertices();
+    queue<int> verticesDescobertos;
+    int nivelAtual=0;
+    int indicePaiAtual;
+    vector<vector<int>> informacoesArvore(vertices.size());
+    for(int i = 0;i<vertices.size();i++){
+        informacoesArvore[i].resize(2);
+    }
+    VerticeMatriz *verticeRaiz = &vertices[indiceVerticeRaiz];
+    verticeRaiz->marcar();
+    verticesDescobertos.push(indiceVerticeRaiz);
+    informacoesArvore[indiceVerticeRaiz][0] = 0;
+    informacoesArvore[indiceVerticeRaiz][1] = -1;
+    indicePaiAtual = indiceVerticeRaiz;
+    while (!verticesDescobertos.empty()) {
+        int indiceVerticeAtual = verticesDescobertos.front();
+        if(informacoesArvore[verticesDescobertos.front()][1] != indicePaiAtual){
+            nivelAtual += 1;
+            indicePaiAtual = verticesDescobertos.front();
+        }
+        vector<bool> *verticeAtual = &verticeAtual->vetorVerticesVizinhos;
+        verticesDescobertos.pop();
+        vector<bool> *vizinhos = &verticeAtual->vetorVerticesVizinhos;
+        for (int i = 0; i < vertices.size(); i++) {
+            VerticeMatriz *vizinhoAtual = & vertices[i];
+            if(!vizinhoAtual->marcadoBusca) {
+                informacoesArvore[i][0] = nivelAtual;
+                informacoesArvore[i][1] = indiceVerticeAtual+1;
+                vizinhoAtual->marcar();
+                verticesDescobertos.push(i);
+            }
+        }
+    }
+    return informacoesArvore;
 }
