@@ -24,7 +24,7 @@ void GrafoMatriz::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("./as_graph.txt", "r");
+    input = fopen("../as_graph.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         inicializarGrafo(numeroVertices);
@@ -106,6 +106,7 @@ void GrafoMatriz::desmarcarVertices(){
 
 void GrafoMatriz::BFS(int indiceVerticeRaiz) {
     desmarcarVertices();
+    vector<vector<int>> Arvores;
     queue<VerticeMatriz *> verticesDescobertos;
     VerticeMatriz *verticeRaiz = &vertices[indiceVerticeRaiz];
     verticeRaiz->marcar();
@@ -124,5 +125,25 @@ void GrafoMatriz::BFS(int indiceVerticeRaiz) {
             }
 
         }
+    }
+}
+
+void GrafoMatriz::DFS(int indiceVerticeRaiz){
+    desmarcarVertices();
+    stack<int> pilhaVertices;
+    pilhaVertices.push(indiceVerticeRaiz);
+    while(!pilhaVertices.empty()){
+        VerticeMatriz *verticeAtual = &vertices[pilhaVertices.top()];
+        pilhaVertices.pop();
+        if(!verticeAtual->marcadoBusca){
+            verticeAtual->marcar();
+            vector<bool> *vizinhos = &verticeAtual->vetorVerticesVizinhos;
+            for(int i = 0; i < vertices.size(); i++){
+                if(vizinhos->at(i) == true) {
+                    pilhaVertices.push(i);
+                }
+            }
+        }
+
     }
 }
