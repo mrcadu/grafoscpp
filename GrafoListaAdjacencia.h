@@ -10,9 +10,13 @@ using namespace std;
 
 class GrafoListaAdjacencia{
     void desmarcarVertices();
+    int findIndiceVertice(Vertice* vertice);
+    bool isInside(Vertice *vertice,vector<Vertice*> vertices);
     void inicializarGrafo(vector<Vertice> vetorVertices);
     int numeroArestas;
 public:
+    list<vector<Vertice*>> findComponentesConexos(int indiceVerticeRaiz);
+    vector<Vertice*> BFSConectividade(int indiceVerticeRaiz);
     GrafoListaAdjacencia();
     void lerGrafo();
     vector<vector<int>> BFSArvoreGeradora(int indiceVerticeRaiz);

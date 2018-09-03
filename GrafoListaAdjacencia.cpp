@@ -13,7 +13,7 @@ void GrafoListaAdjacencia::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../arquivoGrafoMedio.txt", "r");
+    input = fopen("../input.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         vector<Vertice> vetorVertices(numeroVertices);
@@ -87,6 +87,51 @@ void GrafoListaAdjacencia::BFS(int indiceVerticeRaiz){
             }
         }
     }
+}
+vector<Vertice*> GrafoListaAdjacencia::BFSConectividade(int indiceVerticeRaiz){
+    desmarcarVertices();
+    queue<int> verticesDescobertos;
+    vector<Vertice*> verticesPertencentesComponenteConexa;
+    verticesPertencentesComponenteConexa.reserve(vetorVertices.size());
+    Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
+    verticesPertencentesComponenteConexa.push_back(verticeRaiz);
+    verticeRaiz->marcar();
+    verticesDescobertos.push(indiceVerticeRaiz);
+    while (!verticesDescobertos.empty()) {
+        Vertice verticeAtual = vetorVertices[verticesDescobertos.front()];
+        verticesDescobertos.pop();
+        list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
+        for (auto &vizinho : *vizinhos) {
+            Vertice *vizinhoAtual = & vetorVertices[vizinho];
+            if(!vizinhoAtual->marcadoBusca) {
+                verticesPertencentesComponenteConexa.push_back(vizinhoAtual);
+                vizinhoAtual->marcar();
+                verticesDescobertos.push(vizinho);
+            }
+        }
+    }
+    return verticesPertencentesComponenteConexa;
+}
+list<vector<Vertice*>> GrafoListaAdjacencia::findComponentesConexos(int indiceVerticeRaiz) {
+    list<Vertice*> verticesNaoRemovidos;
+    list<vector<Vertice*>> componentesConexos;
+    for(int i = 0;i<vetorVertices.size();i++) {
+        verticesNaoRemovidos.push_back(&vetorVertices[indiceVerticeRaiz]);
+    }
+    verticesNaoRemovidos.remove(&vetorVertices[indiceVerticeRaiz]);
+    componentesConexos.push_back(BFSConectividade(indiceVerticeRaiz));
+    for (auto vertice : componentesConexos.front()) {
+        verticesNaoRemovidos.remove(vertice);
+    }
+    while(verticesNaoRemovidos.size() >= 0){
+        int indiceVerticeAtual = findIndiceVertice(verticesNaoRemovidos.front());
+        vector<Vertice*> verticesConexos = BFSConectividade(indiceVerticeAtual);
+        componentesConexos.push_back(verticesConexos);
+        for (auto vertice : verticesConexos) {
+            verticesNaoRemovidos.remove(vertice);
+        }
+    }
+    return componentesConexos;
 }
 void GrafoListaAdjacencia::DFS(int indiceVerticeRaiz){
     desmarcarVertices();
@@ -170,4 +215,19 @@ vector<vector<int>> GrafoListaAdjacencia::BFSArvoreGeradora(int indiceVerticeRai
         }
     }
     return informacoesArvore;
+}
+bool GrafoListaAdjacencia::isInside(Vertice *vertice,vector<Vertice*> vertices){
+    for(int i=0;i<vertices.size();i++){
+        if (vertice == &vertice[i]){
+            return true;
+        };
+    }
+    return false;
+}
+int GrafoListaAdjacencia::findIndiceVertice(Vertice* vertice){
+    for(int i = 0; i< vetorVertices.size();i++ ){
+        if (&vetorVertices[i] == vertice){
+            return i;
+        }
+    }
 }
