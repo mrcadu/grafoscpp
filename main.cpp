@@ -16,7 +16,7 @@ using namespace std;
 int main(){
     GrafoListaAdjacencia grafoListaAdjacencia;
     grafoListaAdjacencia.lerGrafo();
-    grafoListaAdjacencia.informacoesGrafo();
+    grafoListaAdjacencia.DFS(0);
 }
 
 
