@@ -19,6 +19,7 @@ public:
     void desmarcarVertices();
     void BFS(int indiceVerticeRaiz);
     void DFS(int indiceVerticeRaiz);
+    vector<vector<int>> BFSArvoreGeradora(int indiceVerticeRaiz);
 
 };
 
