@@ -106,6 +106,7 @@ void GrafoMatriz::desmarcarVertices(){
 
 void GrafoMatriz::BFS(int indiceVerticeRaiz) {
     desmarcarVertices();
+    vector<vector<int>> Arvores;
     queue<VerticeMatriz *> verticesDescobertos;
     VerticeMatriz *verticeRaiz = &vertices[indiceVerticeRaiz];
     verticeRaiz->marcar();
