@@ -16,6 +16,7 @@ public:
     GrafoListaAdjacencia();
     void lerGrafo();
     vector<vector<int>> BFSArvoreGeradora(int indiceVerticeRaiz);
+    vector<vector<int>> DFSArvoreGeradora(int indiceVerticeRaiz);
     void BFS(int indiceVerticeRaiz);
     void DFS(int indiceVerticeRaiz);
     void informacoesGrafo();
