@@ -11,6 +11,9 @@ public:
     explicit VerticeMatriz(int numvertices);
     vector<bool> vetorVerticesVizinhos;
     void defineMatrizVertices(int numvertices);
+    void marcar();
+    void desmarcar();
+    bool marcadoBusca;
 };
 
 
