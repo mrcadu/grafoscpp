@@ -18,6 +18,7 @@ public:
     void info();
     void desmarcarVertices();
     void BFS(int indiceVerticeRaiz);
+    void DFS(int indiceVerticeRaiz);
 
 };
 
