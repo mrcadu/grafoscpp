@@ -13,7 +13,7 @@ void GrafoListaAdjacencia::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../input.txt", "r");
+    input = fopen("./live_journal.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         vector<Vertice> vetorVertices(numeroVertices);

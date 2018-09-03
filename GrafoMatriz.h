@@ -20,7 +20,7 @@ public:
     void BFS(int indiceVerticeRaiz);
     void DFS(int indiceVerticeRaiz);
     vector<vector<int>> BFSArvoreGeradora(int indiceVerticeRaiz);
-
+    vector<vector<int>> DFSArvoreGeradora(int indiceVerticeRaiz);
 };
 
 

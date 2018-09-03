@@ -32,7 +32,6 @@ void GrafoMatriz::lerGrafo() {
             vertices[verticeDestino-1].vetorVerticesVizinhos[verticeOrigem-1] = true;
             numeroArestas++;
         }
-
     }
     fclose(input);
 }
@@ -176,6 +175,49 @@ vector<vector<int>> GrafoMatriz::BFSArvoreGeradora(int indiceVerticeRaiz){
                 if (!vizinhoAtual->marcadoBusca) {
                     informacoesArvore[i][0] = nivelAtual;
                     informacoesArvore[i][1] = indiceVerticeAtual + 1;
+                    vizinhoAtual->marcar();
+                    verticesDescobertos.push(i);
+                }
+            }
+        }
+    }
+    return informacoesArvore;
+}
+
+vector<vector<int>> GrafoMatriz::DFSArvoreGeradora(int indiceVerticeRaiz){
+    desmarcarVertices();
+    queue<int> verticesDescobertos;
+    int nivelAtual=0;
+    int indicePaiAtual;
+    vector<vector<int>> informacoesArvore(vertices.size());
+    for(int i = 0;i<vertices.size();i++){
+        informacoesArvore[i].resize(2);
+        informacoesArvore[i][1] = -2;
+    }
+    VerticeMatriz *verticeRaiz = &vertices[indiceVerticeRaiz];
+    verticeRaiz->marcar();
+    verticesDescobertos.push(indiceVerticeRaiz);
+    informacoesArvore[indiceVerticeRaiz][0] = 0;
+    informacoesArvore[indiceVerticeRaiz][1] = -1;
+    indicePaiAtual = indiceVerticeRaiz;
+    while (!verticesDescobertos.empty()) {
+        int indiceVerticeAtual = verticesDescobertos.front();
+        VerticeMatriz *verticeAtual = &vertices[verticesDescobertos.front()];
+        if (informacoesArvore[verticesDescobertos.front()][1] != indicePaiAtual) {
+            nivelAtual += 1;
+            indicePaiAtual = verticesDescobertos.front();
+        }
+        verticesDescobertos.pop();
+        vector<bool> *vetorVerticesVizinhos = &verticeAtual->vetorVerticesVizinhos;
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vetorVerticesVizinhos->at(i) == true) {
+                int indiceVizinhoAtual = i;
+                VerticeMatriz *vizinhoAtual = &vertices[i];
+                if (!vizinhoAtual->marcadoBusca) {
+                    if (informacoesArvore[indiceVizinhoAtual][1] == -2) {
+                        informacoesArvore[indiceVizinhoAtual][1] = indiceVerticeAtual + 1;
+                        informacoesArvore[indiceVizinhoAtual][0] = informacoesArvore[indiceVerticeAtual][0] + 1;
+                    }
                     vizinhoAtual->marcar();
                     verticesDescobertos.push(i);
                 }
