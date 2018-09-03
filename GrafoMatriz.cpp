@@ -24,7 +24,7 @@ void GrafoMatriz::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../as_graph.txt", "r");
+    input = fopen("./as_graph.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         inicializarGrafo(numeroVertices);
@@ -39,7 +39,6 @@ void GrafoMatriz::lerGrafo() {
 }
 
 void GrafoMatriz::info() {
-    lerGrafo();
     int arestas = numeroArestas;
     int tamVertices = vertices.size();
     vector<int> Graus;
@@ -99,12 +98,31 @@ void GrafoMatriz::info() {
 
 }
 
- /// void GrafoMatriz::BFS(){}
+void GrafoMatriz::desmarcarVertices(){
+    for (auto &vetorVertice : vertices) {
+        vetorVertice.desmarcar();
+    }
+}
 
+void GrafoMatriz::BFS(int indiceVerticeRaiz) {
+    desmarcarVertices();
+    queue<VerticeMatriz *> verticesDescobertos;
+    VerticeMatriz *verticeRaiz = &vertices[indiceVerticeRaiz];
+    verticeRaiz->marcar();
+    verticesDescobertos.push(verticeRaiz);
+    while (!verticesDescobertos.empty()) {
+        VerticeMatriz verticeAtual = *verticesDescobertos.front();
+        verticesDescobertos.pop();
+        vector<bool> *vetorVerticesVizinhos = &verticeAtual.vetorVerticesVizinhos;
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vetorVerticesVizinhos->at(i) == true) {
+                VerticeMatriz *vizinhoAtual = &vertices[i];
+                if (!vizinhoAtual->marcadoBusca) {
+                    vizinhoAtual->marcar();
+                    verticesDescobertos.push(vizinhoAtual);
+                }
+            }
 
-
-
-
-
-
-
+        }
+    }
+}

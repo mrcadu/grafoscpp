@@ -16,6 +16,8 @@ public:
     void lerGrafo();
     int numeroArestas;
     void info();
+    void desmarcarVertices();
+    void BFS(int indiceVerticeRaiz);
 
 };
 

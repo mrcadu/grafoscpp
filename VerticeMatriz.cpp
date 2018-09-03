@@ -12,3 +12,12 @@ VerticeMatriz::VerticeMatriz(int numvertices){
     this -> vetorVerticesVizinhos = MatrizVertices;
 
 }
+
+void VerticeMatriz::marcar()
+{
+    marcadoBusca = true;
+}
+void VerticeMatriz::desmarcar()
+{
+    marcadoBusca = false;
+}
