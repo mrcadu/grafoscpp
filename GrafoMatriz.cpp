@@ -13,7 +13,7 @@ void GrafoMatriz::inicializarGrafo(int numvertices) {
     for(int f =0;f<numvertices;f++){
         vertices[f].vetorVerticesVizinhos.resize(numvertices);
     }
-    vertices = vertices;
+    this -> vertices = vertices;
     numeroArestas=0;
 
 }
@@ -23,7 +23,7 @@ void GrafoMatriz::lerGrafo() {
     int verticeOrigem;
     int verticeDestino;
     FILE *input;
-    input = fopen("../as_graph.txt", "r");
+    input = fopen("../input.txt", "r");
     if(input) {
         fscanf(input, "%d\n", &numeroVertices);
         inicializarGrafo(numeroVertices);
@@ -163,20 +163,22 @@ vector<vector<int>> GrafoMatriz::BFSArvoreGeradora(int indiceVerticeRaiz){
     indicePaiAtual = indiceVerticeRaiz;
     while (!verticesDescobertos.empty()) {
         int indiceVerticeAtual = verticesDescobertos.front();
+        VerticeMatriz *verticeAtual = &vertices[verticesDescobertos.front()];
         if(informacoesArvore[verticesDescobertos.front()][1] != indicePaiAtual){
             nivelAtual += 1;
             indicePaiAtual = verticesDescobertos.front();
         }
-        vector<bool> *verticeAtual = &verticeAtual->vetorVerticesVizinhos;
         verticesDescobertos.pop();
-        vector<bool> *vizinhos = &verticeAtual->vetorVerticesVizinhos;
+        vector<bool> *vetorVerticesVizinhos = &verticeAtual->vetorVerticesVizinhos;
         for (int i = 0; i < vertices.size(); i++) {
-            VerticeMatriz *vizinhoAtual = & vertices[i];
-            if(!vizinhoAtual->marcadoBusca) {
-                informacoesArvore[i][0] = nivelAtual;
-                informacoesArvore[i][1] = indiceVerticeAtual+1;
-                vizinhoAtual->marcar();
-                verticesDescobertos.push(i);
+            if (vetorVerticesVizinhos->at(i) == true) {
+                VerticeMatriz *vizinhoAtual = &vertices[i];
+                if (!vizinhoAtual->marcadoBusca) {
+                    informacoesArvore[i][0] = nivelAtual;
+                    informacoesArvore[i][1] = indiceVerticeAtual + 1;
+                    vizinhoAtual->marcar();
+                    verticesDescobertos.push(i);
+                }
             }
         }
     }

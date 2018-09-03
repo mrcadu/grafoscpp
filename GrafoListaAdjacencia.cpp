@@ -216,14 +216,6 @@ vector<vector<int>> GrafoListaAdjacencia::BFSArvoreGeradora(int indiceVerticeRai
     }
     return informacoesArvore;
 }
-bool GrafoListaAdjacencia::isInside(Vertice *vertice,vector<Vertice*> vertices){
-    for(int i=0;i<vertices.size();i++){
-        if (vertice == &vertice[i]){
-            return true;
-        };
-    }
-    return false;
-}
 int GrafoListaAdjacencia::findIndiceVertice(Vertice* vertice){
     for(int i = 0; i< vetorVertices.size();i++ ){
         if (&vetorVertices[i] == vertice){

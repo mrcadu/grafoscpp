@@ -11,7 +11,6 @@ using namespace std;
 class GrafoListaAdjacencia{
     void desmarcarVertices();
     int findIndiceVertice(Vertice* vertice);
-    bool isInside(Vertice *vertice,vector<Vertice*> vertices);
     void inicializarGrafo(vector<Vertice> vetorVertices);
     int numeroArestas;
 public:
