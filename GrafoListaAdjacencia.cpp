@@ -71,38 +71,37 @@ void GrafoListaAdjacencia::informacoesGrafo(){
 }
 void GrafoListaAdjacencia::BFS(int indiceVerticeRaiz){
     desmarcarVertices();
-    queue<Vertice*> verticesDescobertos;
+    queue<int> verticesDescobertos;
     Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
     verticeRaiz->marcar();
-    verticesDescobertos.push(verticeRaiz);
+    verticesDescobertos.push(indiceVerticeRaiz);
     while (!verticesDescobertos.empty()) {
-        Vertice verticeAtual = *verticesDescobertos.front();
+        Vertice verticeAtual = vetorVertices[verticesDescobertos.front()];
         verticesDescobertos.pop();
         list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
         for (auto &vizinho : *vizinhos) {
             Vertice *vizinhoAtual = & vetorVertices[vizinho];
             if(!vizinhoAtual->marcadoBusca) {
                 vizinhoAtual->marcar();
-                verticesDescobertos.push(vizinhoAtual);
+                verticesDescobertos.push(vizinho);
             }
         }
     }
 }
 void GrafoListaAdjacencia::DFS(int indiceVerticeRaiz){
     desmarcarVertices();
-    stack<Vertice*> pilhaVertices;
-    Vertice *verticeRaiz = &vetorVertices[indiceVerticeRaiz];
-    pilhaVertices.push(verticeRaiz);
+    stack<int> pilhaVertices;
+    pilhaVertices.push(indiceVerticeRaiz);
     while(!pilhaVertices.empty()){
-        pilhaVertices.top()->marcar();
-        Vertice verticeAtual = *pilhaVertices.top();
+        Vertice *verticeAtual = &vetorVertices[pilhaVertices.top()];
         pilhaVertices.pop();
-        list<int> *vizinhos = &verticeAtual.verticesVizinhosIndices;
-        for(auto &vizinho :*vizinhos){
-            Vertice *vizinhoAtual = &vetorVertices[vizinho];
-            if(!vizinhoAtual->marcadoBusca) {
-                pilhaVertices.push(vizinhoAtual);
+        if(!verticeAtual->marcadoBusca){
+            verticeAtual->marcar();
+            list<int> *vizinhos = &verticeAtual->verticesVizinhosIndices;
+            for(auto &vizinho :*vizinhos){
+                pilhaVertices.push(vizinho);
             }
         }
+
     }
 }
