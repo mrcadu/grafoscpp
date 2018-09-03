@@ -6,6 +6,7 @@
 #include <cstring>
 #include <stdio.h>
 #include "GrafoListaAdjacencia.h"
+#include "GrafoMatriz.h"
 #include <time.h>
 #include <algorithm>
 #include <iostream>
@@ -14,9 +15,6 @@
 using namespace std;
 
 int main(){
-    GrafoListaAdjacencia grafoListaAdjacencia;
-    grafoListaAdjacencia.lerGrafo();
-    grafoListaAdjacencia.DFS(0);
 }
 
 

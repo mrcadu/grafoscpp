@@ -14,6 +14,8 @@ public:
     GrafoMatriz();
     void inicializarGrafo(int numvertices);
     void lerGrafo();
+    int numeroArestas;
+    void info();
 
 };
 
