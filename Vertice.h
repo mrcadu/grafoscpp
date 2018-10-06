@@ -11,8 +11,8 @@ public:
     void marcar();
     void desmarcar();
     list<int> verticesVizinhosIndices;
+    int peso;
     bool marcadoBusca;
 };
-
 
 #endif
